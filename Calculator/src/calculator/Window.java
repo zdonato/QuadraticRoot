@@ -28,6 +28,7 @@ public class Window extends JFrame{
 		Event e = new Event(); 
 		
 		title = new JLabel("Calculate Quadratic Root"); 
+		title.setForeground(Color.BLUE);
 		g.fill = GridBagConstraints.HORIZONTAL;
 		g.gridx = 1;
 		g.gridy = 0;
@@ -43,21 +44,18 @@ public class Window extends JFrame{
 		g.fill = GridBagConstraints.HORIZONTAL; 
 		g.gridx = 1; 
 		g.gridy = 1; 
-		
 		add(a, g); 
 		
 		bLabel = new JLabel("B:");
 		g.fill = GridBagConstraints.HORIZONTAL; 
 		g.gridx = 0; 
 		g.gridy = 2; 
-		
 		add(bLabel, g);
 		
 		b = new JTextField(5); 
 		g.fill = GridBagConstraints.HORIZONTAL; 
 		g.gridx = 1;
 		g.gridy = 2;
-		
 		add(b, g); 
 		
 		cLabel = new JLabel("C:"); 
@@ -104,7 +102,9 @@ public class Window extends JFrame{
 		public void actionPerformed(ActionEvent e){
 			// Set the roots to empty from any previous submissions. 
 			root1.setText(""); 
+			root1.setForeground(Color.BLACK);
 			root2.setText(""); 
+			root2.setForeground(Color.BLACK);
 			
 			try {
 				// Calculate root1.
@@ -113,6 +113,7 @@ public class Window extends JFrame{
 				r2 = calc.getRoot2(Double.parseDouble(a.getText()), Double.parseDouble(b.getText()), Double.parseDouble(c.getText())); 
 			} catch (Exception e1){
 				root1.setText("Enter a valid number."); 
+				root1.setForeground(Color.RED);
 			}
 			
 			try { 
@@ -128,8 +129,6 @@ public class Window extends JFrame{
 			} catch (NullPointerException n){
 				root1.setText("Enter a valid number.");
 			}
-			
-			
 		} // End actionPerformed.
 	} // End Event class.
 
