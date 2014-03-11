@@ -15,38 +15,81 @@ import java.awt.event.ActionListener;
 public class Window extends JFrame{
 	// Initialize data members. 
 	private static final long serialVersionUID = 1L;
-	private JLabel root1, root2, aLabel, bLabel, cLabel; 
+	private JLabel root1, root2, aLabel, bLabel, cLabel, title; 
 	private JButton submit;
 	private JTextField a, b, c; 
 	private Calculator calc = new Calculator(); 
 	
 	// Set up the constructor for the window. 
 	public Window(){
-		root1 = new JLabel(""); 
-		root2 = new JLabel(""); 
-		aLabel = new JLabel("A:"); 
-		bLabel = new JLabel("B:"); 
-		cLabel = new JLabel("C:"); 
-		submit = new JButton("Submit"); 
-		a = new JTextField(10); 
-		b = new JTextField(10); 
-		c = new JTextField(10); 
-		setLayout(new FlowLayout());
+		// Initialize the variables.
+		setLayout(new GridBagLayout());
+		GridBagConstraints g = new GridBagConstraints();
 		Event e = new Event(); 
 		
-		// Add text fields for the coefficients.
-		add(aLabel);
-		add(a); 
-		add(bLabel); 
-		add(b); 
-		add(cLabel); 
-		add(c);
-		// Add the submit button.
-		add(submit); 
+		title = new JLabel("Calculate Quadratic Root"); 
+		g.fill = GridBagConstraints.HORIZONTAL;
+		g.gridx = 1;
+		g.gridy = 0;
+		add(title, g); 
 		
-		// Add the labels for roots but keep them empty for now. 
-		add(root1); 
-		add(root2);
+		aLabel = new JLabel("A:"); 
+		g.fill = GridBagConstraints.HORIZONTAL; 
+		g.gridx = 0; 
+		g.gridy = 1; 
+		add(aLabel, g); 
+		
+		a = new JTextField(5); 
+		g.fill = GridBagConstraints.HORIZONTAL; 
+		g.gridx = 1; 
+		g.gridy = 1; 
+		
+		add(a, g); 
+		
+		bLabel = new JLabel("B:");
+		g.fill = GridBagConstraints.HORIZONTAL; 
+		g.gridx = 0; 
+		g.gridy = 2; 
+		
+		add(bLabel, g);
+		
+		b = new JTextField(5); 
+		g.fill = GridBagConstraints.HORIZONTAL; 
+		g.gridx = 1;
+		g.gridy = 2;
+		
+		add(b, g); 
+		
+		cLabel = new JLabel("C:"); 
+		g.fill = GridBagConstraints.HORIZONTAL; 
+		g.gridx = 0; 
+		g.gridy = 3;
+		add(cLabel, g); 
+		
+		c = new JTextField(5); 
+		g.fill = GridBagConstraints.HORIZONTAL; 
+		g.gridx = 1; 
+		g.gridy = 3; 
+		add(c, g); 
+		
+		submit = new JButton("Submit"); 
+		g.fill = GridBagConstraints.HORIZONTAL; 
+		g.gridx = 1; 
+		g.gridy = 4;
+		add(submit, g); 
+		
+		root1 = new JLabel(""); 
+		g.fill = GridBagConstraints.HORIZONTAL; 
+		g.gridx = 2; 
+		g.gridy = 1;
+		add(root1, g); 
+		
+		root2 = new JLabel(""); 
+		g.fill = GridBagConstraints.HORIZONTAL; 
+		g.gridx = 2; 
+		g.gridy = 2; 
+		add(root2, g); 
+		
 		
 		// Create an event to listen for submit click. 
 		submit.addActionListener(e); 
@@ -74,18 +117,13 @@ public class Window extends JFrame{
 			
 			try { 
 				// If the roots exist, check for equality.
-				if (r1.equals(r2)){
+				if (r1.equals("none") || r2.equals("none"))
+					root1.setText("No real roots."); 
+				else if (r1.equals(r2))
 					root1.setText("One root: " + r1);
-				} else {
-					if (r1.length() >= 8) 
-						root1.setText("Root 1: " + r1.substring(0,8));
-					else 
-						root1.setText("Root 1: " + r1);
-					
-					if (r2.length() >= 8)
-						root2.setText("Root 2: " + r2.substring(0,8));
-					else
-						root2.setText("Root 2: " + r2);
+				else {
+					root1.setText("Root 1: " + r1);
+					root2.setText("Root 2: " + r2);
 				}
 			} catch (NullPointerException n){
 				root1.setText("Enter a valid number.");

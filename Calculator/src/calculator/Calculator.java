@@ -31,7 +31,7 @@ public class Calculator{
 		
 		// Negative discriminant means imaginary roots.
 		if (disc < 0){
-			return "No real roots."; 
+			return "none"; 
 		}
 		
 		// If the quadratic term is missing, return only one root.
