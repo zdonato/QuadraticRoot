@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 public class Window extends JFrame{
 	// Initialize data members. 
 	private static final long serialVersionUID = 1L;
-	private JLabel root1, root2; 
+	private JLabel root1, root2, aLabel, bLabel, cLabel; 
 	private JButton submit;
 	private JTextField a, b, c; 
 	private Calculator calc = new Calculator(); 
@@ -24,15 +24,22 @@ public class Window extends JFrame{
 	public Window(){
 		root1 = new JLabel(""); 
 		root2 = new JLabel(""); 
+		aLabel = new JLabel("A:"); 
+		bLabel = new JLabel("B:"); 
+		cLabel = new JLabel("C:"); 
 		submit = new JButton("Submit"); 
-		setLayout(new FlowLayout()); 
+		a = new JTextField(10); 
+		b = new JTextField(10); 
+		c = new JTextField(10); 
+		setLayout(new FlowLayout());
+		Event e = new Event(); 
 		
 		// Add text fields for the coefficients.
-		a = new JTextField("a", 10); 
-		b = new JTextField("b", 10); 
-		c = new JTextField("c", 10); 
+		add(aLabel);
 		add(a); 
+		add(bLabel); 
 		add(b); 
+		add(cLabel); 
 		add(c);
 		// Add the submit button.
 		add(submit); 
@@ -42,8 +49,8 @@ public class Window extends JFrame{
 		add(root2);
 		
 		// Create an event to listen for submit click. 
-		Event e = new Event(); 
 		submit.addActionListener(e); 
+		getRootPane().setDefaultButton(submit); 
 	}
 	
 	public class Event implements ActionListener {
@@ -70,8 +77,15 @@ public class Window extends JFrame{
 				if (r1.equals(r2)){
 					root1.setText("One root: " + r1);
 				} else {
-					root1.setText("Root 1: " + r1.substring(0,7));
-					root2.setText("Root 2: " + r2.substring(0,7)); 
+					if (r1.length() >= 8) 
+						root1.setText("Root 1: " + r1.substring(0,8));
+					else 
+						root1.setText("Root 1: " + r1);
+					
+					if (r2.length() >= 8)
+						root2.setText("Root 2: " + r2.substring(0,8));
+					else
+						root2.setText("Root 2: " + r2);
 				}
 			} catch (NullPointerException n){
 				root1.setText("Enter a valid number.");
@@ -86,7 +100,7 @@ public class Window extends JFrame{
 		Window window = new Window(); 
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
-		window.setSize(140, 300); 
+		window.setSize(500, 200); 
 		window.setTitle("Quadratic Root Finder"); 
 	}
 	
