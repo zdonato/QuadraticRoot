@@ -1,4 +1,4 @@
-package calculator; 
+package main; 
 
 import javax.swing.*; 
 
@@ -22,7 +22,7 @@ public class Window extends JFrame{
 	private JButton submit;
 	private JTextField a, b, c; 
 	private ImageIcon image; 
-	private Calculator calc = new Calculator(); 
+	private Quadratic calc = new Quadratic(); 
 	
 	// Set up the constructor for the window. 
 	public Window(){

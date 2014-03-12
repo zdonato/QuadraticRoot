@@ -1,4 +1,4 @@
-package calculator; 
+package main; 
 
 /**
  * @author Zachary Donato
@@ -7,17 +7,12 @@ package calculator;
  * Revisions: 
  */
 
-public class Calculator{
+public class Quadratic{
 	// Initialize data members.
 	private double root1; 
 	private double root2;
 	private double disc; 
-	
-	// Constructor. 
-	public Calculator(){
-		
-	}
-	
+
 	/**
 	 * Method getRoot1 to calculate the quadratic root of a given functions coefficients.
 	 * @param a Double a, coefficient of the quadratic term.
