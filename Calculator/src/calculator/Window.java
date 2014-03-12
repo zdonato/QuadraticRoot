@@ -54,12 +54,15 @@ public class Window extends JFrame{
 		add(aLabel, g); 
 		
 		a = new JTextField(5); 
+		// Add a focus listener so that the text field is highlighted.
 		a.addFocusListener(new FocusListener(){
 			
 			public void focusGained(FocusEvent fe){
+				// Select the text when focused.
 				a.selectAll();
 			}
 
+			// Must implement focusLost.
 			public void focusLost(FocusEvent arg0) {
 				
 			}
@@ -77,6 +80,19 @@ public class Window extends JFrame{
 		add(bLabel, g);
 		
 		b = new JTextField(5); 
+		// Add a focus listener so that the text field is highlighted.
+		b.addFocusListener(new FocusListener(){
+			
+			public void focusGained(FocusEvent fe){
+				// Select the text when focused.
+				b.selectAll();
+			}
+
+			// Must implement focusLost.
+			public void focusLost(FocusEvent arg0) {
+				
+			}
+		});
 		g.fill = GridBagConstraints.HORIZONTAL; 
 		g.gridx = 1;
 		g.gridy = 2;
@@ -90,6 +106,19 @@ public class Window extends JFrame{
 		add(cLabel, g); 
 		
 		c = new JTextField(5); 
+		// Add a focus listener so that the text field is highlighted.
+		c.addFocusListener(new FocusListener(){
+			
+			public void focusGained(FocusEvent fe){
+				// Select the text when focused.
+				c.selectAll();
+			}
+			
+			// Must implement focusLost.
+			public void focusLost(FocusEvent arg0) {
+				
+			}
+		});
 		g.fill = GridBagConstraints.HORIZONTAL; 
 		g.gridx = 1; 
 		g.gridy = 3; 
@@ -186,7 +215,7 @@ public class Window extends JFrame{
 		Window window = new Window(); 
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
-		window.setSize(450, 270); 
+		window.setSize(500, 270); 
 		window.setTitle("Quadratic Root Finder"); 
 	}
 	
