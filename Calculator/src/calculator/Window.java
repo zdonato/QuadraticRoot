@@ -1,9 +1,12 @@
 package calculator; 
 
 import javax.swing.*; 
+
 import java.awt.*; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 /**
  * Window class to contain the GUI for the calculator.
@@ -51,6 +54,16 @@ public class Window extends JFrame{
 		add(aLabel, g); 
 		
 		a = new JTextField(5); 
+		a.addFocusListener(new FocusListener(){
+			
+			public void focusGained(FocusEvent fe){
+				a.selectAll();
+			}
+
+			public void focusLost(FocusEvent arg0) {
+				
+			}
+		});
 		g.fill = GridBagConstraints.HORIZONTAL; 
 		g.gridx = 1; 
 		g.gridy = 1; 
