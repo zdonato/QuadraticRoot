@@ -1,8 +1,7 @@
 package main; 
 
 import javax.swing.*; 
-
-import java.awt.*; 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -63,7 +62,7 @@ public class Window extends JFrame{
 			}
 
 			// Must implement focusLost.
-			public void focusLost(FocusEvent arg0) {
+			public void focusLost(FocusEvent arg) {
 				
 			}
 		});
